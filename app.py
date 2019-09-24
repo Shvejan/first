@@ -17,7 +17,4 @@ def next():
 def chk():
     now = datetime.datetime.now()
     yr = now.month==1 and now.date==1
-    if yr:
-        return render_template("chk.html" , bool = "yo bro")
-    else:
-        return render_template("chk.html" , bool = "nope yaar")
+    return render_template("chk.html", yr=yr)
