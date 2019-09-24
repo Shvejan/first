@@ -9,3 +9,7 @@ def index():
 def next(name):
     #name = name.capitalize()
     return f"<h1>hola ,{name}!<h1>"
+@app.route("/hola/mexi")
+def sec():
+    #name = name.capitalize()
+    return f"<h1>hola hollaoaa!<h1>"
