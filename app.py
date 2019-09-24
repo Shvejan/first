@@ -7,4 +7,5 @@ def index():
 
 @app.route("/<string:name>")
 def next(name):
-    return f"hola ,{name}!"
+    #name = name.capitalize()
+    return f"<h1>hola ,{name}!<h1>"
