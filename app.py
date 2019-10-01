@@ -1,6 +1,6 @@
 import datetime
 import random
-from flask import Flask,render_template\
+from flask import Flask,render_template,request
 
 app = Flask(__name__)
 
@@ -28,3 +28,11 @@ def link():
 @app.route("/game")
 def game():
     return render_template("game.html" )
+
+@app.route("/res" , methods = ["POST"])
+def res():
+    n = request.form.get("guess")
+    x = random.randint(0,1)
+
+    n=int(n)
+    return render_template("res.html", n=n ,x=x)

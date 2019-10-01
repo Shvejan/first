@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block head %}
+
+{% if (x==n) %}
+  yo!<br>
+  congratulations!!;)
+{% else %}
+  nope!<br>
+  number is {{ x }}<br>
+  guess is {{ n }}
+{% endif %}
+
+{% endblock %}
+
+{% block par %}
+<a href="{{url_for("game")}}">Play again!</a>
+{% endblock %}
