@@ -1,29 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      h1
-      {
-        color: pink;
-        font-size: 100px;
-        text-align:center;
-      }
-      *
-      {
-        background-color: black;
-        margin: auto;
-      }
-    </style>
-
-    <title>what say</title>
-  </head>
-  <body>
+{% extends "layout.html" %}
+  {% block par %}
     {%if yr%}
       <h1>YOPE crct</h1>
     {% else %}
       <h1>NOPE</h1>
     {% endif %}
 
+
     <a href="{{ url_for('home') }}">go bak</a>
-  </body>
-</html>
+  {% endblock %}

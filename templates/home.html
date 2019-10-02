@@ -1,42 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head
-    <title><h1>Home page</h1></title>
-    <style>
-      h1
-      {
-        color: pink;
-        font-size: 100px;
-        text-align:center;
-      }
-      h2
-      {
-        color: white;
-        font-size: 50px;
-      }
-      li
-      {
-        color: white;
-        font-size: 20px;
-        
-
-
-      }
-      *
-      {
-        background-color: black;
-        margin: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Welcome ppl</h2>
-    <h3>links</h3>
-    <ul>
-      <li><a href="{{ url_for('next') }}">index page</a></li>
-      <li><a href="{{ url_for('game') }}">game page</a></li>
-      <li><a href="{{ url_for('chk') }}">chk</a></li>
-      <li><a href="{{ url_for("link") }}">link layout</a></li>
-    </ul>
-  </body>
-</html>
+{% extends "layout.html" %}
+{% block head %}
+<h1>Home page</h1>
+{% endblock %}
+{% block par %}
+<h2>Welcome ppl</h2>
+<h3>links</h3>
+<ul>
+  <li><a href="{{ url_for('next') }}">index page</a></li>
+  <li><a href="{{ url_for('game') }}">game page</a></li>
+  <li><a href="{{ url_for('chk') }}">chk</a></li>
+  <li><a href="{{ url_for("link") }}">link layout</a></li>
+</ul>
+{% endblock %}
