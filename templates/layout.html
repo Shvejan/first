@@ -3,6 +3,11 @@
   <head>
     <title>my web</title>
     <style>
+    a
+    {
+      color: rgb(6, 134, 150);
+      font-size: 30px;
+    }
       h1
       {
         color: pink;
@@ -32,7 +37,7 @@
       }
       li
       {
-        color: black;
+        color: white;
         font-size: 30px;
       }
       input
@@ -45,6 +50,7 @@
           font-size: 25px;
 
       }
+      li
     </style>
   </head>
   <body>
@@ -52,6 +58,7 @@
     <p>
       {% block par %}{% endblock %}
     </p>
-
+    <br><br><br>
+    <a href="{{url_for("home")}}">back</a>
   </body>
 </html>
