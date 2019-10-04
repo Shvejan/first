@@ -1,0 +1,12 @@
+{% extends "layout.html"  %}
+{% block head %}
+<h1>Flight details</h1>
+{% endblock %}
+
+{% block par %}
+  {% for a,b,c,d in rows %}
+    <ul>
+      <li>{{a ,  b ,  c ,  d}}</li>
+    </ul>
+  {% endfor %}
+{% endblock %}

@@ -3,11 +3,22 @@
   <head>
     <title>my web</title>
     <style>
-    a
-    {
-      color: rgb(6, 134, 150);
-      font-size: 30px;
-    }
+      .container
+      {
+        width: 90%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      a
+      {
+        color: rgb(6, 134, 150);
+        font-size: 30px;
+      }
+      a:hover
+      {
+        font-style: italic;
+        color: yellow;
+      }
       h1
       {
         color: pink;
@@ -54,11 +65,15 @@
     </style>
   </head>
   <body>
+    <div class = "container">
+
     <h1>{% block head %}{% endblock %}</h1>
+    <br><br>
     <p>
       {% block par %}{% endblock %}
     </p>
     <br><br><br>
     <a href="{{url_for("home")}}">back</a>
+    </div>
   </body>
 </html>
