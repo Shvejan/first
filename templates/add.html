@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Add flights{% endblock %}
+{% block head %}
+Enter flight details
+{% endblock %}
+{% block par %}
+  <form action="{{url_for("added")}}" method="post">
+    <input type="text" name="origin" placeholder="enter origin">
+    <input type="text" name="dest" placeholder="enter destination">
+    <input type="text" name="dur" placeholder="enter duration">
+    <button type="submit" name="button">add</button>
+  </form>
+
+{% endblock %}

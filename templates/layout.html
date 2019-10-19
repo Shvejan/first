@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>my web</title>
+    <title>{% block title %}{% endblock %}</title>
     <style>
       .container
       {
@@ -29,6 +29,7 @@
       {
         background-color: black;
         margin: auto;
+        color: white;
       }
       h2
       {
@@ -61,7 +62,17 @@
           font-size: 25px;
 
       }
-      li
+      th
+      {
+          background-color: #4CAF50;
+          color: white;
+      }
+      th, td
+      {
+          padding: 15px;
+          text-align: left;
+      }
+
     </style>
   </head>
   <body>
@@ -73,7 +84,7 @@
       {% block par %}{% endblock %}
     </p>
     <br><br><br>
-    <a href="{{url_for("home")}}">back</a>
+    <a href="{{url_for("home")}}">Home</a>
     </div>
   </body>
 </html>

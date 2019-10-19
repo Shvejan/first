@@ -1,12 +1,40 @@
 {% extends "layout.html"  %}
+{% block title %}flight details{% endblock %}
 {% block head %}
 <h1>Flight details</h1>
 {% endblock %}
 
 {% block par %}
-  {% for a,b,c,d in rows %}
-    <ul>
-      <li>{{a ,  b ,  c ,  d}}</li>
-    </ul>
-  {% endfor %}
+<table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Duration</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in rows %}
+        <tr>
+
+            {% for a in r %}
+              <td>{{ a }} </td>
+            {% endfor %}
+            <td>
+              <form action="{{url_for("book")}}" method="post">
+                <button type="submit" name="fly" value="{{r[0]}}">Book</button>
+
+              </form>
+            </td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <form action="{{url_for("pas")}}" method="post">
+    <input type="number" name="fid" placeholder="Enter a flight number">
+    <button type="submit" name="go">go!</button>
+  </form>
+  <br><br>
 {% endblock %}

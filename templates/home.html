@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% block title %}home{% endblock %}
 {% block head %}
 <h1>Home page</h1>
 {% endblock %}
@@ -12,5 +13,6 @@
   <li><a href="{{ url_for("link") }}">link layout</a></li>
   <li><a href="{{ url_for("ses") }}">Sessions</a></li>
   <li><a href="{{url_for("db")}}">Flights</a></li>
+  <li><a href="{{url_for("add")}}">Add flights</a></li>
 </ul>
 {% endblock %}

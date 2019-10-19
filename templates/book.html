@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}book a flight{% endblock %}
+{% block head %}
+  <h2>choose a flight</h2>
+{% endblock %}
+{% block par %}
+  <h3>Flight number {{ fly }}</h3>
+  <form action="{{url_for("confirm")}}" method="post">
+    <input type="text" name="nam" placeholder="enter name">
+    <button type="submit" name="fly" , value={{fly}}>book</button>
+  </form>
+{% endblock %}
