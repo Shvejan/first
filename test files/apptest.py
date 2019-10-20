@@ -8,13 +8,21 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 import datetime
 app = Flask(__name__)
-
-
-engine = create_engine("postgresql://postgres:@shivatejan1@localhost/test")
-db = scoped_session(sessionmaker(bind=engine))
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+
+conn = psycopg2.connect(
+    database="test",
+    user="postgres",
+    password = "@shivatejan1",
+    host = "localhost",
+    port="5432"
+)
+cur=conn.cursor()
+
+
 @app.route("/")
 def home():
     return render_template("home.html" )
@@ -64,15 +72,17 @@ def ses():
     return render_template("ses.html", notes=session["notes"])
 
 
-@app.route("/flyt")
-def flyt():
-    rows = db.execute("SELECT * FROM flights").fetchall()
+@app.route("/db")
+def db():
+
+    cur.execute("SELECT * FROM flights ")
+    rows = cur.fetchall()
     return render_template("db.html" , rows = rows)
 
 @app.route("/book", methods = ["POST" , "GET"])
 def book():
     if request.method == "GET":
-        return fly()
+        return db()
     fly = request.form.get("fly")
     return render_template("book.html",fly=fly)
 
@@ -80,8 +90,8 @@ def book():
 def confirm():
     name = request.form.get("nam")
     fly = int(request.form.get("fly"))
-    db.execute("INSERT INTO passengers(f_id , name) VALUES(:f_id, :name)",{"f_id":fly , "name": name})
-    db.commit()
+    cur.execute("INSERT INTO passengers(f_id , name) VALUES(%s,%s)",(fly,name))
+    conn.commit()
     return render_template("confirm.html")
 
 
@@ -95,25 +105,27 @@ def added():
     origin = request.form.get("origin")
     dest = request.form.get("dest")
     dur = request.form.get("dur")
-    db.execute("INSERT INTO flights(origin,destination,duration) VALUES(:origin, :destination, :duration)",{"origin":origin, "destination":dest,"duration":dur})
-    db.commit()
+    cur.execute("INSERT INTO flights(origin,destination,duration) VALUES(%s,%s,%s)",(origin, dest,dur))
+    conn.commit()
     return render_template("added.html")
 
 
 @app.route("/pass" , methods = ["POST" , "GET"])
 def pas():
     if request.method == "GET":
-        return flyt()
+        return db()
     else:
         error = ""
         n=[]
         fid = request.form.get("fid")
         try:
-            f = db.execute("SELECT id FROM flights WHERE id = :id",{"id":fid}).fetchone()
+            cur.execute("SELECT id FROM flights WHERE id = %s ",(fid))
+            f = cur.fetchone()
         except (Exception):
             error = "no flights  found"
         else:
-                names  = db.execute("SELECT name FROM passengers WHERE f_id = :f_id ",{"f_id":fid}).fetchall()
+                cur.execute("SELECT name FROM passengers WHERE f_id = %s ",(fid))
+                names  = cur.fetchall()
                 if len(names)==0:
                     error = "no passengers found"
                 for na in names:
