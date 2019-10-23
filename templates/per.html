@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>ppl</title>
     <style>
       .container
       {
@@ -78,13 +78,32 @@
   <body>
     <div class = "container">
 
-    <h1>{% block head %}{% endblock %}</h1>
+    <h1>people</h1>
     <br><br>
-    <p>
-      {% block par %}{% endblock %}
-    </p>
+    <table>
+      <thead>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Age</th>
+      </thead>
+      <tbody>
+
+        {% for p in ppl %}
+          <tr>
+            <td>{{ p.id }}</td><td>{{ p.name }}</td><td>{{ p.age }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+
+
+    </table>
     <br><br><br>
-    <a href="{{url_for("home")}}">Home</a>
+    <form action="{{ url_for("per") }}" method="post">
+      <input type="text" name="na" placeholder="enter name">
+      <input type="number" name="ag" placeholder="age?">
+      <button type="submit" name="button">add!</button>
+
+    </form>
     </div>
   </body>
 </html>
