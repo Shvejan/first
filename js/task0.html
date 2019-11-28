@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+          document.querySelector('.form').onsubmit = ()=>{
+            const li= document.createElement('li');
+            li.innerHTML = document.querySelector('#new').value;
+            document.querySelector('#list').append(li);
+            document.querySelector('#new').value ="";
+            return false;
+          }
+        })
+
+      </script>
+    <title></title>
+  </head>
+  <body>
+    <ul id = "list">
+
+    </ul>
+    <form class="form" action="#">
+      <input type="text" id="new" placeholder="enter a task">
+      <button type="submit" name="button">Add!!</button>
+
+    </form>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script>
+          document.addEventListener('DOMContentLoaded',()=>{
+            document.querySelectorAll('.colr').forEach((button)=>{
+              button.onclick=()=>{
+                document.querySelector("h1").style.color=button.dataset.clr;
+              }
+
+          });
+        });
+    </script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1>heyaa!</h1>
+      <button class="colr" value="red" data-clr="red"  >red</button>
+      <button class="colr" value="blue" data-clr="blue">blue</button>
+      <button class="colr" value="green" data-clr="green">green</button>
+  </body>
+</html>

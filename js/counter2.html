@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', function()
+      {
+        document.querySelector('button').onclick=count;
+      });
+
+
+      let c=0;
+      function count() {
+          c++;
+          document.querySelector('h1').innerHTML = c;
+
+          if (c % 10 === 0) {
+              alert(`Counter is at ${c}!`);
+          }
+      }
+    </script>
+    <title>hehe</title>
+
+  </head>
+  <body>
+    <h1>0</h1>
+    <button>yoloo</button>
+  </body>
+</html>

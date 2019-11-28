@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+      background-color: black;
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded',()=>{
+        document.querySelector('#btn').disabled=true;
+        document.querySelector('#new').onkeyup = ()=>{
+          if(document.querySelector('#new').value.length > 0)
+            document.querySelector('#btn').disabled=false;
+          else
+            document.querySelector('#btn').disabled=true;
+        };
+        document.querySelector('.form').onsubmit = ()=>{
+          const li = document.createElement('li');
+          li.innerHTML = document.querySelector('#new').value;
+          document.querySelector('#tasks').append(li);
+          document.querySelector('#new').value = '';
+          document.querySelector('#btn').disabled = true;
+          return false;
+        };
+      });
+
+    </script>
+    <title></title>
+  </head>
+  <body>
+    <ul id="tasks">
+
+    </ul>
+    <form class="form">
+      <input type="text" id="new">
+      <button type="submit" id="btn">ADD!</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>doc</title>
+    <script>
+      let c=0;
+      function fn()
+      {
+        if(document.querySelector("h1").innerHTML=="heyyaa")
+          document.querySelector("h1").innerHTML="peace"
+        else
+          document.querySelector("h1").innerHTML="heyyaa"
+        c++
+        document.querySelector('#cntr').innerHTML=c
+      }
+    </script>
+  </head>
+  <body>
+    <h1>heyyaa</h1>
+    <button type="button" onclick=fn() name="button">lezgoo</button>
+    <h3 id = "cntr">0</h3>
+  </body>
+</html>
